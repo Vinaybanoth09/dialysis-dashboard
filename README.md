@@ -1,73 +1,32 @@
-# React + TypeScript + Vite
+# 🏥 Dialysis Session Intake Dashboard
+**Developed by Vinny**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+I built this full-stack application to help dialysis nurses manage patient intake and automatically flag clinical risks. My goal was to create a system that is easy to use during a busy shift while ensuring patient safety through real-time anomaly detection.
 
-Currently, two official plugins are available:
+## 🛠 My Tech Stack
+- **Frontend:** React + TypeScript (Vite) for a fast, responsive UI.
+- **Backend:** Node.js & Express (TypeScript) to handle clinical logic.
+- **Database:** MongoDB Atlas for flexible patient and session storage.
+- **Icons:** Lucide-React for clear visual health alerts.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🧠 Clinical Logic & My Assumptions
+Since the assignment had some "intentional ambiguity," I made the following clinical decisions to protect patients:
+1. **Weight Gain:** I flag any patient who has gained more than **5% of their dry weight** since their last session. This helps nurses spot fluid overload immediately.
+2. **Blood Pressure:** I set the high-risk threshold at **140 mmHg (Systolic)** based on standard hypertension guidelines for dialysis patients.
+3. **Session Time:** I assumed a standard treatment lasts **3-5 hours**. If a session is shorter than 3 hours, the system flags it so the nurse can document the reason for early termination.
 
-## React Compiler
+## 🚀 How to Run My Project
+1. **Clone the repo** and open it in VS Code.
+2. **Backend Setup:**
+   - Go to `/backend`, run `npm install`.
+   - Add your `MONGO_URI` to a `.env` file.
+   - Run `npm run dev` to start the server on Port 5000.
+3. **Frontend Setup:**
+   - Go to `/frontend`, run `npm install`.
+   - Run `npm run dev` and open the link in your browser.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 💡 What I Learned & AI Use
+I used AI (Gemini) as a pair-programmer to help me set up the TypeScript configuration and brainstorm the UI layout. 
+- **What I changed:** I manually refined the anomaly detection logic to make sure it was comparing the current weight against the **Patient's Dry Weight** stored in the database, ensuring the calculations were medically accurate.
+- **Next Steps:** If I had more time, I would add a "Nurse Login" and a way to export today's anomalies as a PDF report.
