@@ -1,5 +1,5 @@
 # 🏥 Dialysis Session Intake Dashboard
-**Developed by Vinny**
+**Developed by Vinay**
 
 ## Project Overview
 I built this full-stack application to help dialysis nurses manage patient intake and automatically flag clinical risks. My goal was to create a system that is easy to use during a busy shift while ensuring patient safety through real-time anomaly detection.
